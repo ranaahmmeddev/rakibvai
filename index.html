@@ -1,1513 +1,857 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Photo Editing & Retouching Services</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>PixelPro | Professional Photo Editing &amp; Retouching Services</title>
+    <meta name="description" content="Elevate your brand's visual identity with world-class photo editing and retouching services.">
     
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Montserrat:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Iconify (Solar Linear Icons) -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
     <style>
-        :root {
-            --bg-dark: #0a0a0c;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --bg-card-hover: rgba(255, 255, 255, 0.06);
-            --text-main: #ffffff;
-            --text-muted: #a0a0a5;
-            --teal-gradient: linear-gradient(135deg, #00f2fe 0%, #0077ff 100%);
-            --teal-light: #00f2fe;
-            --teal-glow: rgba(0, 242, 254, 0.3);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .text-gradient {
-            background: var(--teal-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--teal-gradient);
-            color: white;
-            box-shadow: 0 4px 15px var(--teal-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--teal-glow);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 1px solid var(--border-glass);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--teal-light);
-        }
-
-        /* Navbar */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 0;
-            background: rgba(10, 10, 12, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding-top: 160px;
-            padding-bottom: 100px;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: var(--teal-light);
-            filter: blur(150px);
-            opacity: 0.15;
-            z-index: -1;
-            border-radius: 50%;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 24px;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-        }
-
-        /* Before/After Slider Component */
-        .ba-wrapper {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            user-select: none;
-            aspect-ratio: 4/5;
-            background: #1a1a1a;
-        }
-
-        .ba-wrapper.hero-slider {
-            box-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
-        }
-
-        .ba-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            pointer-events: none;
-        }
-
-        .ba-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-            z-index: 2;
-        }
-
-        .ba-slider-line {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background: var(--teal-light);
-            z-index: 3;
-            transform: translateX(-50%);
-            pointer-events: none;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
-        }
-
-        .ba-handle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 44px;
-            height: 44px;
-            background: var(--teal-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 4;
-            cursor: ew-resize;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5), 0 0 10px rgba(0, 242, 254, 0.4);
-            color: white;
-            font-size: 16px;
-        }
-
-        .ba-label {
-            position: absolute;
-            bottom: 20px;
-            padding: 6px 16px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(5px);
-            color: white;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 600;
-            z-index: 4;
-            pointer-events: none;
-            border: 1px solid var(--border-glass);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .ba-label-before { left: 20px; }
-        .ba-label-after { right: 20px; }
-
-        /* Stats / Why Choose Me */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 30px 20px;
-            border-radius: 16px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 242, 254, 0.3);
-            background: var(--bg-card-hover);
-        }
-
-        .stat-icon {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            background: var(--teal-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .stat-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 40px 30px;
-            border-radius: 20px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--teal-gradient);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 0;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--teal-light);
-        }
-
-        .service-card:hover::before {
-            opacity: 0.05;
-        }
-
-        .service-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--teal-light);
-            margin-bottom: 24px;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Transformation Section */
-        .transformation-section {
-            background: rgba(255, 255, 255, 0.01);
-            border-top: 1px solid var(--border-glass);
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .transform-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .transform-benefits {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 500;
-        }
-
-        .benefit-item i {
-            color: var(--teal-light);
-        }
-
-        .transform-cta {
-            text-align: center;
-        }
-
-        /* Portfolio Section */
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid var(--border-glass);
-            color: var(--text-muted);
-            padding: 8px 24px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--teal-gradient);
-            color: white;
-            border-color: transparent;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 1;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            opacity: 0;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-overlay h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .portfolio-overlay p {
-            color: var(--teal-light);
-            font-size: 0.9rem;
-        }
-
-        /* Working Process */
-        .process-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .process-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 10%;
-            width: 80%;
-            height: 2px;
-            background: var(--border-glass);
-            z-index: 0;
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            width: 250px;
-        }
-
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--bg-dark);
-            border: 2px solid var(--teal-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--teal-light);
-            margin: 0 auto 20px;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
-        }
-
-        .process-step h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .process-step p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* Pricing Section */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            align-items: center;
-        }
-
-        .price-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 50px 40px;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .price-card.popular {
-            transform: scale(1.05);
-            border-color: var(--teal-light);
-            background: linear-gradient(180deg, rgba(0,242,254,0.05) 0%, rgba(0,0,0,0) 100%);
-            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.1);
-        }
-
-        .price-card.popular:hover {
-            transform: scale(1.05) translateY(-5px);
-        }
-
-        .price-header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-glass);
-            padding-bottom: 30px;
-        }
-
-        .price-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .price-header .price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            font-family: 'Montserrat';
-        }
-
-        .price-header span {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .price-features li {
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--text-muted);
-        }
-
-        .price-features i {
-            color: var(--teal-light);
-            font-size: 0.9rem;
-        }
-
-        .price-btn {
-            width: 100%;
-            margin-top: 30px;
-        }
-
-        /* Testimonials Section */
-        .testimonial-section {
-            background: rgba(255, 255, 255, 0.01);
-            border-top: 1px solid var(--border-glass);
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .testimonial-slider-container {
-            position: relative;
-            max-width: 100%;
-            overflow: hidden;
-            padding: 10px 0 20px;
-        }
-
-        .testimonial-track {
-            display: flex;
-            gap: 30px;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
-        }
-
-        .testimonial-card {
-            flex: 0 0 calc(33.333% - 20px);
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 40px 30px;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .testimonial-card:hover {
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 242, 254, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .testi-rating {
-            color: #ffc107;
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
-
-        .testi-text {
-            font-size: 1.05rem;
-            color: var(--text-main);
-            font-style: italic;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .testi-client {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .testi-client img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--teal-light);
-        }
-
-        .testi-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-        }
-
-        .testi-info span {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 40px;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--border-glass);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active, .slider-dot:hover {
-            background: var(--teal-light);
-            box-shadow: 0 0 10px var(--teal-glow);
-        }
-
-        /* CTA Banner */
-        .cta-banner {
-            background: linear-gradient(rgba(10, 10, 12, 0.9), rgba(10, 10, 12, 0.9)), url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            text-align: center;
-            padding: 120px 20px;
-            border-radius: 30px;
-            margin: 0 24px 100px;
-            border: 1px solid var(--border-glass);
-        }
-
-        .cta-banner h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-banner p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-glass);
-            padding: 80px 0 40px;
-            background: #050505;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-col h4 {
-            font-size: 1.2rem;
-            margin-bottom: 24px;
-            color: white;
-        }
-
-        .footer-col p, .footer-col a {
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .footer-col a:hover {
-            color: var(--teal-light);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border-glass);
-        }
-
-        .social-links a:hover {
-            background: var(--teal-gradient);
-            color: white;
-            border-color: transparent;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-glass);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Scroll Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-grid, .transform-grid, .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .hero-content {
-                text-align: center;
-            }
-            .hero-content p {
-                margin: 0 auto 40px;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .ba-wrapper.hero-slider {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-            .process-wrapper::before {
-                display: none;
-            }
-            .process-wrapper {
-                flex-direction: column;
-                gap: 40px;
-            }
-            .price-card.popular {
-                transform: scale(1);
-            }
-            .price-card.popular:hover {
-                transform: translateY(-5px);
-            }
-            .testimonial-card {
-                flex: 0 0 calc(50% - 15px);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .services-grid, .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .transform-benefits {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            .cta-banner {
-                margin: 0 0 100px;
-                border-radius: 0;
-            }
-            .testimonial-card {
-                flex: 0 0 100%;
-            }
-        }
+        /* Custom UI behaviors not directly handled by atomic classes */
+        .before-after-overlay { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body>
+<body class="bg-[#0a0a0c] text-white font-['Inter'] overflow-x-hidden antialiased selection:bg-[#00f2fe] selection:text-black">
+
+    <!-- Sticky WhatsApp Button -->
+    <a href="https://wa.me/1234567890" target="_blank" aria-label="Chat on WhatsApp" class="fixed bottom-8 right-8 w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(37,211,102,0.4)] z-50 hover:scale-110 hover:shadow-[0_6px_25px_rgba(37,211,102,0.6)] transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" class="text-3xl w-[30px] h-[30px]" style="width: 30px; height: 30px; color: rgb(255, 255, 255)" data-icon-set="solar" data-solar="phone-calling-linear" stroke-width="2" data-icon-replaced="true"><g fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M13.5 2s2.334.212 5.303 3.182c2.97 2.97 3.182 5.303 3.182 5.303m-7.778-4.949s.99.282 2.475 1.767s1.768 2.475 1.768 2.475"></path><path fill="currentColor" d="m15.1 15.027l-.543-.516zm.456-.48l.544.517zm2.417-.335l-.374.65zm1.91 1.1l-.374.65zm.539 3.446l.543.517zm-1.42 1.496l-.545-.517zm-1.326.71l.074.745zm-9.86-4.489l.543-.516zm-4.813-9.51l-.749.041zm6.475 1.538l.543.517zm.156-2.81l.613-.433zM8.374 3.91l-.613.433zM5.26 3.609l.544.516zM3.691 5.26l-.543-.516zm7.372 7.795l.544-.517zm4.582 2.488l.455-.48l-1.088-1.033l-.455.48zm1.954-.682l1.91 1.1l.749-1.3l-1.911-1.1zm2.279 3.38l-1.42 1.495l1.087 1.034l1.42-1.496zm-2.275 1.975c-1.435.141-5.18.02-9.244-4.258l-1.087 1.033c4.429 4.663 8.654 4.898 10.478 4.717zm-9.244-4.258c-3.876-4.081-4.526-7.523-4.607-9.033l-1.498.08c.1 1.85.884 5.634 5.018 9.986zm1.376-6.637l.286-.302l-1.087-1.033l-.287.302zm.512-4.062L8.986 3.477l-1.225.866l1.26 1.783zm-5.53-2.168L3.149 4.745l1.088 1.033l1.57-1.653zm4.474 5.713a38 38 0 0 0-.545-.515l-.002.002l-.003.003l-.05.058a1.6 1.6 0 0 0-.23.427c-.098.275-.15.639-.084 1.093c.13.892.715 2.091 2.242 3.7l1.088-1.034c-1.428-1.503-1.78-2.428-1.846-2.884c-.032-.22 0-.335.013-.372l.008-.019l-.028.037l-.018.02s-.002 0-.545-.516m1.328 4.767c1.523 1.604 2.673 2.234 3.55 2.377c.451.073.816.014 1.092-.095a1.5 1.5 0 0 0 .421-.25l.036-.034l.014-.014l.007-.006l.003-.003l.001-.002s.002-.001-.542-.518c-.544-.516-.543-.517-.543-.518l.002-.001l.002-.003l.005-.005l.01-.01l.037-.032q.015-.008-.004.001c-.02.008-.11.04-.3.009c-.402-.066-1.27-.42-2.703-1.929zM8.986 3.477C7.972 2.043 5.944 1.8 4.718 3.092l1.087 1.033c.523-.55 1.444-.507 1.956.218zM3.752 6.926c-.022-.4.152-.8.484-1.148L3.148 4.745c-.536.564-.943 1.347-.894 2.261zm14.705 12.811c-.279.294-.57.452-.854.48l.147 1.492c.747-.073 1.352-.472 1.795-.939zM10.021 9.02c.968-1.019 1.036-2.613.226-3.76l-1.225.866c.422.597.357 1.392-.088 1.86zm9.488 6.942c.821.473.982 1.635.369 2.28l1.087 1.033c1.305-1.374.925-3.673-.707-4.613zm-3.409-.898c.385-.406.986-.497 1.499-.202l.748-1.3c-1.099-.632-2.46-.45-3.335.47z"></path></g></svg>
+    </a>
 
     <!-- Navigation -->
-    <nav>
-        <div class="container nav-container">
-            <div class="logo">Pixel<span class="text-gradient">Pro</span></div>
-            <div class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#transformation">Transformation</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#pricing">Pricing</a>
-            </div>
-            <a href="#contact" class="btn btn-outline">Get Custom Quote</a>
+    <header class="fixed transition-all duration-300 z-50 bg-[#0a0a0c]/80 w-full border-white/10 border-b top-0 backdrop-blur-xl" id="navbar">
+        <div class="flex h-20 max-w-7xl mr-auto ml-auto relative items-center justify-between">
+
+  <!-- Left: Mobile Menu Toggle -->
+  <div class="flex-1 md:hidden flex items-center pl-6">
+    <button aria-label="Toggle menu" aria-expanded="false" id="menuToggle" class="group relative w-6 h-5 flex flex-col justify-between items-center z-[1001]">
+                    <span class="w-full h-[2px] bg-white rounded-full transition-all duration-300 origin-left group-aria-expanded:rotate-[42deg]"></span>
+                    <span class="w-full h-[2px] bg-white rounded-full transition-all duration-300 group-aria-expanded:opacity-0"></span>
+                    <span class="w-full h-[2px] bg-white rounded-full transition-all duration-300 origin-left group-aria-expanded:-rotate-[42deg]"></span>
+                </button>
+  </div>
+
+  <!-- Center: Logo -->
+  <div class="flex-1 md:flex-none flex justify-center md:pl-6 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-[1001]">
+    <a href="#home" class="font-['Montserrat'] font-semibold tracking-tighter text-xl text-white">
+      PIXELPRO
+    </a>
+  </div>
+
+  <!-- Desktop Nav Links -->
+  <nav class="hidden md:flex flex-1 gap-8 gap-x-8 gap-y-8 items-center justify-center" aria-label="Main Navigation">
+    <a href="#services" class="text-sm font-medium text-[#a0a0a5] hover:text-white transition-colors">Services</a>
+    <a href="#transformation" class="text-sm font-medium text-[#a0a0a5] hover:text-white transition-colors">Transformation</a>
+    <a href="#portfolio" class="text-sm font-medium text-[#a0a0a5] hover:text-white transition-colors">Portfolio</a>
+    <a href="#pricing" class="text-sm font-medium text-[#a0a0a5] hover:text-white transition-colors">Pricing</a>
+  </nav>
+  <div class="flex-1 flex pr-6 items-center justify-end">
+    <a href="#contact" class="hidden md:inline-flex items-center justify-center hover:bg-white/5 hover:border-[#00f2fe] transition-all duration-300 text-sm font-medium text-white border-white/10 border rounded-full pt-2.5 pr-6 pb-2.5 pl-6 backdrop-blur-md">
+      Get Custom Quote
+    </a>
+    <a href="mailto:hello@pixelpro.com" class="md:hidden text-white hover:text-[#00f2fe] transition-colors z-[1001]" aria-label="Send Email">
+      <iconify-icon icon="solar:letter-linear" class="text-2xl"></iconify-icon>
+    </a>
+  </div>
+
+  <!-- Right: Desktop Quote / Mobile Email -->
+
+
+</div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="fixed inset-0 top-20 bg-[#0a0a0c] border-t border-white/10 flex flex-col items-center pt-10 -translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-40 md:hidden">
+            <nav class="flex flex-col items-center gap-8 w-full" aria-label="Mobile Navigation">
+                <a href="#services" class="text-lg font-medium text-[#a0a0a5] hover:text-white mobile-link">Services</a>
+                <a href="#transformation" class="text-lg font-medium text-[#a0a0a5] hover:text-white mobile-link">Transformation</a>
+                <a href="#portfolio" class="text-lg font-medium text-[#a0a0a5] hover:text-white mobile-link">Portfolio</a>
+                <a href="#pricing" class="text-lg font-medium text-[#a0a0a5] hover:text-white mobile-link">Pricing</a>
+                <a href="#contact" class="mt-4 px-8 py-3 rounded-full text-sm font-medium bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.3)] mobile-link">
+                    Get Custom Quote
+                </a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-grid">
-            <div class="hero-content reveal">
-                <h1>Professional Photo <span class="text-gradient">Editing & Retouching</span> Services</h1>
-                <p>I turn ordinary product photos into high-converting visuals. Premium retouching, color correction, and manipulation for brands worldwide.</p>
-                <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
-                    <a href="#contact" class="btn btn-outline">Get Free Trial</a>
-                </div>
-            </div>
-            <div class="hero-image reveal">
-                <!-- Interactive Before/After -->
-                <div class="ba-wrapper hero-slider">
-                    <!-- Base Layer: AFTER Image -->
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=100" alt="After Edit" class="ba-image">
-                    <span class="ba-label ba-label-after">After</span>
-                    
-                    <!-- Overlay Layer: BEFORE Image -->
-                    <div class="ba-overlay">
-                        <img src="https://images.unsplash.com/photo-1611042553365-9b101441c135?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Before Edit" class="ba-image">
-                    </div>
-                    <span class="ba-label ba-label-before">Before</span>
-                    
-                    <!-- Slider Core & Handle -->
-                    <div class="ba-slider-line"></div>
-                    <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats / Why Choose Me -->
-    <section class="section-padding" id="stats">
-        <div class="container stats-grid">
-            <div class="stat-card reveal">
-                <i class="fas fa-calendar-check stat-icon"></i>
-                <h4>5+ Years Experience</h4>
-                <p>Industry proven expertise</p>
-            </div>
-            <div class="stat-card reveal" style="transition-delay: 0.1s;">
-                <i class="fas fa-images stat-icon"></i>
-                <h4>5000+ Images</h4>
-                <p>Successfully edited & delivered</p>
-            </div>
-            <div class="stat-card reveal" style="transition-delay: 0.2s;">
-                <i class="fas fa-bolt stat-icon"></i>
-                <h4>Fast Delivery</h4>
-                <p>24-48 hours turnaround time</p>
-            </div>
-            <div class="stat-card reveal" style="transition-delay: 0.3s;">
-                <i class="fas fa-headset stat-icon"></i>
-                <h4>24/7 Support</h4>
-                <p>Always here to help you</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="section-padding" id="services">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>My Core <span class="text-gradient">Services</span></h2>
-                <p>Comprehensive photo editing solutions tailored to elevate your brand's visual identity and drive sales.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-content">
-                        <i class="fas fa-cut service-icon"></i>
-                        <h3>Clipping Path</h3>
-                        <p>Precise, hand-drawn clipping paths for perfect background removal, ensuring clean edges for any product type.</p>
-                    </div>
-                </div>
-                <div class="service-card reveal" style="transition-delay: 0.1s;">
-                    <div class="service-content">
-                        <i class="fas fa-magic service-icon"></i>
-                        <h3>Photo Retouching</h3>
-                        <p>High-end skin, product, and dust retouching to make your subject look flawless while keeping natural textures.</p>
-                    </div>
-                </div>
-                <div class="service-card reveal" style="transition-delay: 0.2s;">
-                    <div class="service-content">
-                        <i class="fas fa-tshirt service-icon"></i>
-                        <h3>Ghost Mannequin</h3>
-                        <p>Professional neck joint and invisible mannequin effects for apparel, giving garments a 3D hollow look.</p>
-                    </div>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-content">
-                        <i class="fas fa-adjust service-icon"></i>
-                        <h3>Color Correction</h3>
-                        <p>Accurate color matching, exposure fixing, and white balance adjustment to ensure product colors are true to life.</p>
-                    </div>
-                </div>
-                <div class="service-card reveal" style="transition-delay: 0.1s;">
-                    <div class="service-content">
-                        <i class="fas fa-clone service-icon"></i>
-                        <h3>Shadow Creation</h3>
-                        <p>Adding natural drop, reflection, or cast shadows to give products depth and a realistic, grounded appearance.</p>
-                    </div>
-                </div>
-                <div class="service-card reveal" style="transition-delay: 0.2s;">
-                    <div class="service-content">
-                        <i class="fas fa-object-group service-icon"></i>
-                        <h3>Image Masking</h3>
-                        <p>Advanced masking for complex objects like hair, fur, or transparent items where standard clipping paths fail.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dedicated Transformation Section -->
-    <section class="section-padding transformation-section" id="transformation">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>See The <span class="text-gradient">Transformation</span></h2>
-                <p>Drag the slider to see how I enhance every detail professionally. From dull raw files to stunning final deliverables.</p>
-            </div>
-
-            <div class="transform-grid">
-                <!-- Product Retouch -->
-                <div class="ba-wrapper reveal">
-                    <!-- Base Layer (After URL) -->
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=100" alt="Product After" class="ba-image">
-                    <span class="ba-label ba-label-after">After</span>
-                    
-                    <!-- Overlay Layer (Before URL) -->
-                    <div class="ba-overlay">
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Product Before" class="ba-image">
-                    </div>
-                    <span class="ba-label ba-label-before">Before</span>
-                    
-                    <div class="ba-slider-line"></div>
-                    <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
-                </div>
-
-                <!-- Fashion Retouch -->
-                <div class="ba-wrapper reveal" style="transition-delay: 0.1s;">
-                    <!-- Base Layer (After URL) -->
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=100" alt="Fashion After" class="ba-image">
-                    <span class="ba-label ba-label-after">After</span>
-                    
-                    <!-- Overlay Layer (Before URL) -->
-                    <div class="ba-overlay">
-                        <img src="https://images.unsplash.com/photo-1550614000-4b95d4ed798b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Fashion Before" class="ba-image">
-                    </div>
-                    <span class="ba-label ba-label-before">Before</span>
-                    
-                    <div class="ba-slider-line"></div>
-                    <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
-                </div>
-
-                <!-- Jewelry Editing -->
-                <div class="ba-wrapper reveal" style="transition-delay: 0.2s;">
-                    <!-- Base Layer (After URL) -->
-                    <img src="https://images.unsplash.com/photo-1599643478524-fb524fa0a8a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=100" alt="Jewelry After" class="ba-image">
-                    <span class="ba-label ba-label-after">After</span>
-                    
-                    <!-- Overlay Layer (Before URL) -->
-                    <div class="ba-overlay">
-                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Jewelry Before" class="ba-image">
-                    </div>
-                    <span class="ba-label ba-label-before">Before</span>
-                    
-                    <div class="ba-slider-line"></div>
-                    <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
-                </div>
-            </div>
-
-            <div class="transform-benefits reveal">
-                <div class="benefit-item"><i class="fas fa-check-circle"></i> High-End Retouching</div>
-                <div class="benefit-item"><i class="fas fa-check-circle"></i> Natural Texture Preservation</div>
-                <div class="benefit-item"><i class="fas fa-check-circle"></i> E-commerce Ready Output</div>
-            </div>
-
-            <div class="transform-cta reveal">
-                <a href="#contact" class="btn btn-primary">Get Your Free Test Edit</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="section-padding" id="portfolio">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Recent <span class="text-gradient">Work</span></h2>
-                <p>Browse through my latest edited photos across different industries.</p>
-            </div>
-
-            <div class="portfolio-filters reveal">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-                <button class="filter-btn" data-filter="fashion">Fashion</button>
-                <button class="filter-btn" data-filter="jewelry">Jewelry</button>
-            </div>
-
-            <div class="portfolio-grid">
-                <div class="portfolio-item reveal mix ecommerce">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product">
-                    <div class="portfolio-overlay">
-                        <h4>Headphone Retouch</h4>
-                        <p>E-commerce / Background Removal</p>
-                    </div>
-                </div>
-                <div class="portfolio-item reveal mix fashion">
-                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion">
-                    <div class="portfolio-overlay">
-                        <h4>Apparel Editorial</h4>
-                        <p>Fashion / Color Grading</p>
-                    </div>
-                </div>
-                <div class="portfolio-item reveal mix jewelry">
-                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jewelry">
-                    <div class="portfolio-overlay">
-                        <h4>Diamond Ring Fix</h4>
-                        <p>Jewelry / High-End Retouch</p>
-                    </div>
-                </div>
-                <div class="portfolio-item reveal mix ecommerce">
-                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camera">
-                    <div class="portfolio-overlay">
-                        <h4>Camera Gear</h4>
-                        <p>E-commerce / Shadow Creation</p>
-                    </div>
-                </div>
-                <div class="portfolio-item reveal mix fashion">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Model">
-                    <div class="portfolio-overlay">
-                        <h4>Beauty Portrait</h4>
-                        <p>Model / Skin Retouching</p>
-                    </div>
-                </div>
-                <div class="portfolio-item reveal mix jewelry">
-                    <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Watch">
-                    <div class="portfolio-overlay">
-                        <h4>Luxury Watch</h4>
-                        <p>Jewelry / Metal Retouching</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Working Process -->
-    <section class="section-padding" style="background: rgba(255,255,255,0.01);">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Simple <span class="text-gradient">Workflow</span></h2>
-                <p>How we take your images from raw to ready-to-publish in 3 easy steps.</p>
-            </div>
+    <main class="">
+        <!-- Hero Section -->
+        <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20" id="home">
+            <video autoplay="" muted="" loop="" playsinline="" class="absolute inset-0 w-full h-full object-cover -z-20">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0c]/80 via-[#0a0a0c]/60 to-[#0a0a0c] -z-10"></div>
             
-            <div class="process-wrapper reveal">
-                <div class="process-step">
-                    <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <h4>1. Upload Images</h4>
-                    <p>Send your raw files via Dropbox, Drive, or WeTransfer with your instructions.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon"><i class="fas fa-magic"></i></div>
-                    <h4>2. Professional Editing</h4>
-                    <p>I apply precise edits, retouching, and quality checks based on your requirements.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon"><i class="fas fa-download"></i></div>
-                    <h4>3. Download Files</h4>
-                    <p>Receive your flawless, e-commerce ready images within the agreed timeframe.</p>
+            <div class="max-w-4xl mx-auto px-6 text-center z-10 scroll-reveal transition-all duration-1000 opacity-100 translate-y-0">
+                <h1 class="font-['Montserrat'] font-semibold text-5xl md:text-7xl uppercase tracking-tight mb-6 leading-tight text-white">
+                    Cinematic <span class="bg-gradient-to-br from-[#00f2fe] to-[#0077ff] bg-clip-text text-transparent">Retouching</span>
+                </h1>
+                <p class="text-lg md:text-xl text-[#a0a0a5] mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                    Elevate your brand's visual identity. We turn ordinary raw files into high-converting, flawless masterpieces for global brands.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-full text-sm font-medium bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.3)] hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,242,254,0.4)] transition-all duration-300">
+                        Get Free Trial
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-full text-sm font-medium border border-white/10 backdrop-blur-md text-white hover:bg-white/5 hover:border-[#00f2fe]/50 transition-all duration-300">
+                        Get Custom Quote
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Pricing Section -->
-    <section class="section-padding" id="pricing">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Transparent <span class="text-gradient">Pricing</span></h2>
-                <p>Quality editing solutions scaled to fit your business volume.</p>
-            </div>
-
-            <div class="pricing-grid">
-                <!-- Basic -->
-                <div class="price-card reveal">
-                    <div class="price-header">
-                        <h3>Basic Editing</h3>
-                        <div class="price">$0.50<span>/img</span></div>
+        <!-- Stats Section -->
+        <section class="pt-20 pb-20" id="stats">
+            <div class="max-w-7xl mr-auto ml-auto pr-6 pl-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 gap-x-4 gap-y-4">
+                    <div class="md:p-8 hover:-translate-y-1 hover:bg-white/10 hover:border-[#00f2fe]/40 hover:shadow-[0_10px_30px_rgba(0,242,254,0.1)] transition-all duration-300 scroll-reveal flex flex-col aspect-[4/3] md:aspect-auto text-center bg-white/5 opacity-100 border-white/10 border rounded-2xl pt-6 pr-6 pb-6 pl-6 backdrop-blur-md translate-y-0 items-center justify-center">
+                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-4xl text-[#00f2fe] mb-4"></iconify-icon>
+                        <h4 class="font-['Montserrat'] font-semibold text-sm md:text-base">450 Skilled Graphic Designers</h4>
                     </div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Basic Clipping Path</li>
-                        <li><i class="fas fa-check"></i> White Background</li>
-                        <li><i class="fas fa-check"></i> Simple Resizing</li>
-                        <li><i class="fas fa-check"></i> 24h Turnaround</li>
-                        <li><i class="fas fa-times" style="color:#555"></i> Color Correction</li>
+                    <div class="md:p-8 hover:-translate-y-1 hover:bg-white/10 hover:border-[#00f2fe]/40 hover:shadow-[0_10px_30px_rgba(0,242,254,0.1)] transition-all duration-300 scroll-reveal delay-100 flex flex-col aspect-[4/3] md:aspect-auto text-center bg-white/5 opacity-100 border-white/10 border rounded-2xl pt-6 pr-6 pb-6 pl-6 backdrop-blur-md translate-y-0 items-center justify-center">
+                        <iconify-icon icon="solar:headphones-round-sound-linear" class="text-4xl text-[#00f2fe] mb-4"></iconify-icon>
+                        <h4 class="md:text-base text-sm font-semibold font-['Montserrat']">24/7–365 Client Support Support</h4>
+                    </div>
+                    <div class="md:p-8 hover:-translate-y-1 hover:bg-white/10 hover:border-[#00f2fe]/40 hover:shadow-[0_10px_30px_rgba(0,242,254,0.1)] transition-all duration-300 scroll-reveal delay-200 flex flex-col aspect-[4/3] md:aspect-auto text-center bg-white/5 opacity-100 border-white/10 border rounded-2xl pt-6 pr-6 pb-6 pl-6 backdrop-blur-md translate-y-0 items-center justify-center">
+                        <iconify-icon icon="solar:shield-check-linear" class="text-4xl text-[#00f2fe] mb-4"></iconify-icon>
+                        <h4 class="font-['Montserrat'] font-semibold text-sm md:text-base">20+ Professional Quality Controllers</h4>
+                    </div>
+                    <div class="md:p-8 hover:-translate-y-1 hover:bg-white/10 hover:border-[#00f2fe]/40 hover:shadow-[0_10px_30px_rgba(0,242,254,0.1)] transition-all duration-300 scroll-reveal delay-300 flex flex-col aspect-[4/3] md:aspect-auto text-center bg-white/5 opacity-100 border-white/10 border rounded-2xl pt-6 pr-6 pb-6 pl-6 backdrop-blur-md translate-y-0 items-center justify-center">
+                        <iconify-icon icon="solar:gallery-linear" class="text-4xl text-[#00f2fe] mb-4"></iconify-icon>
+                        <h4 class="font-['Montserrat'] font-semibold text-sm md:text-base">3000+ Image Processing Per Day</h4>
+                    </div>
+                </div>
+            </div><div class="max-w-7xl mx-auto pt-6 pr-6 pl-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div class="md:p-8 hover:-translate-y-1 hover:bg-white/10 hover:border-[#00f2fe]/40 hover:shadow-[0_10px_30px_rgba(0,242,254,0.1)] transition-all duration-300 scroll-reveal flex flex-col aspect-[4/3] md:aspect-auto text-center bg-white/5 opacity-100 border-white/10 border rounded-2xl pt-6 pr-6 pb-6 pl-6 backdrop-blur-md translate-y-0 items-center justify-center">
+                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-4xl text-[#00f2fe] mb-4"></iconify-icon>
+                        <h4 class="font-['Montserrat'] font-semibold text-sm md:text-base">450 Skilled Graphic Designers</h4>
+                    </div>
+                    <div class="md:p-8 hover:-translate-y-1 hover:bg-white/10 hover:border-[#00f2fe]/40 hover:shadow-[0_10px_30px_rgba(0,242,254,0.1)] transition-all duration-300 scroll-reveal delay-100 flex flex-col aspect-[4/3] md:aspect-auto text-center bg-white/5 opacity-100 border-white/10 border rounded-2xl pt-6 pr-6 pb-6 pl-6 backdrop-blur-md translate-y-0 items-center justify-center">
+                        <iconify-icon icon="solar:headphones-round-sound-linear" class="text-4xl text-[#00f2fe] mb-4"></iconify-icon>
+                        <h4 class="font-['Montserrat'] font-semibold text-sm md:text-base">24/7–365 Client Support</h4>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-md text-center hover:-translate-y-1 hover:bg-white/10 hover:border-[#00f2fe]/40 hover:shadow-[0_10px_30px_rgba(0,242,254,0.1)] transition-all duration-300 scroll-reveal delay-200 flex flex-col justify-center items-center aspect-[4/3] md:aspect-auto opacity-100 translate-y-0">
+                        <iconify-icon icon="solar:shield-check-linear" class="text-4xl text-[#00f2fe] mb-4"></iconify-icon>
+                        <h4 class="font-['Montserrat'] font-semibold text-sm md:text-base">20+ Professional Quality Controllers</h4>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-md text-center hover:-translate-y-1 hover:bg-white/10 hover:border-[#00f2fe]/40 hover:shadow-[0_10px_30px_rgba(0,242,254,0.1)] transition-all duration-300 scroll-reveal delay-300 flex flex-col justify-center items-center aspect-[4/3] md:aspect-auto opacity-100 translate-y-0">
+                        <iconify-icon icon="solar:gallery-linear" class="text-4xl text-[#00f2fe] mb-4"></iconify-icon>
+                        <h4 class="font-['Montserrat'] font-semibold text-sm md:text-base">3000+ Image Processing Per Day</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="pt-24 pb-24" id="services">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 max-w-2xl mx-auto scroll-reveal">
+                    <h2 class="font-['Montserrat'] font-semibold text-3xl md:text-4xl tracking-tight mb-4">My Core <span class="bg-gradient-to-br from-[#00f2fe] to-[#0077ff] bg-clip-text text-transparent">Services</span></h2>
+                    <p class="text-[#a0a0a5] text-base md:text-lg">Comprehensive photo editing solutions tailored to elevate your brand's visual identity and drive sales.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Service Card -->
+                    <div class="group relative min-h-[280px] md:min-h-[340px] rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-end p-6 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#00f2fe]/60 hover:shadow-[0_15px_30px_rgba(0,242,254,0.15)] scroll-reveal">
+                        <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Clipping Path" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent group-hover:via-[#00f2fe]/20 transition-colors duration-500 z-0"></div>
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:pen-new-square-linear" class="text-4xl text-[#00f2fe] mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                            <h3 class="font-['Montserrat'] font-semibold text-xl mb-2 text-white">Clipping Path</h3>
+                            <p class="text-[#a0a0a5] text-sm leading-relaxed">Precise, hand-drawn paths for perfect background removal, ensuring clean edges.</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative min-h-[280px] md:min-h-[340px] rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-end p-6 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#00f2fe]/60 hover:shadow-[0_15px_30px_rgba(0,242,254,0.15)] scroll-reveal delay-100">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Retouching" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <div class="group-hover:via-[#00f2fe]/20 transition-colors duration-500 z-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent absolute top-0 right-0 bottom-0 left-0"></div>
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:magic-stick-3-linear" class="text-4xl text-[#00f2fe] mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                            <h3 class="font-['Montserrat'] font-semibold text-xl mb-2 text-white">Photo Retouching</h3>
+                            <p class="text-[#a0a0a5] text-sm leading-relaxed">High-end skin, product, and dust retouching to make your subject look flawless naturally.</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative min-h-[280px] md:min-h-[340px] rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-end p-6 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#00f2fe]/60 hover:shadow-[0_15px_30px_rgba(0,242,254,0.15)] scroll-reveal delay-200">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Ghost Mannequin" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent group-hover:via-[#00f2fe]/20 transition-colors duration-500 z-0"></div>
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:t-shirt-linear" class="text-4xl text-[#00f2fe] mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                            <h3 class="font-['Montserrat'] font-semibold text-xl mb-2 text-white">Ghost Mannequin</h3>
+                            <p class="text-[#a0a0a5] text-sm leading-relaxed">Professional neck joint and invisible mannequin effects giving garments a 3D look.</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative min-h-[280px] md:min-h-[340px] rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-end p-6 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#00f2fe]/60 hover:shadow-[0_15px_30px_rgba(0,242,254,0.15)] scroll-reveal">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" alt="Color Correction" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent group-hover:via-[#00f2fe]/20 transition-colors duration-500 z-0"></div>
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:palette-linear" class="text-4xl text-[#00f2fe] mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                            <h3 class="font-['Montserrat'] font-semibold text-xl mb-2 text-white">Color Correction</h3>
+                            <p class="text-[#a0a0a5] text-sm leading-relaxed">Accurate color matching, exposure fixing, and adjustment for true-to-life colors.</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative min-h-[280px] md:min-h-[340px] rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-end p-6 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#00f2fe]/60 hover:shadow-[0_15px_30px_rgba(0,242,254,0.15)] scroll-reveal delay-100">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Shadow Creation" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent group-hover:via-[#00f2fe]/20 transition-colors duration-500 z-0"></div>
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:layers-linear" class="text-4xl text-[#00f2fe] mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                            <h3 class="font-['Montserrat'] font-semibold text-xl mb-2 text-white">Shadow Creation</h3>
+                            <p class="text-[#a0a0a5] text-sm leading-relaxed">Adding natural drop, reflection, or cast shadows to give products a realistic look.</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative min-h-[280px] md:min-h-[340px] rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-end p-6 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#00f2fe]/60 hover:shadow-[0_15px_30px_rgba(0,242,254,0.15)] scroll-reveal delay-200">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Image Masking" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent group-hover:via-[#00f2fe]/20 transition-colors duration-500 z-0"></div>
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:object-scan-linear" class="text-4xl text-[#00f2fe] mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                            <h3 class="font-['Montserrat'] font-semibold text-xl mb-2 text-white">Image Masking</h3>
+                            <p class="text-[#a0a0a5] text-sm leading-relaxed">Advanced masking for complex objects like hair, fur, perfectly extracted.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transformation Section -->
+        <section class="py-24 bg-white/[0.02] border-y border-white/5" id="transformation">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 max-w-2xl mx-auto scroll-reveal">
+                    <h2 class="font-['Montserrat'] font-semibold text-3xl md:text-4xl tracking-tight mb-4">See The <span class="bg-gradient-to-br from-[#00f2fe] to-[#0077ff] bg-clip-text text-transparent">Transformation</span></h2>
+                    <p class="text-[#a0a0a5] text-base md:text-lg">Drag the slider to see how I enhance every detail professionally. From dull raw files to stunning final deliverables.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Slider 1 -->
+                    <div class="ba-slider relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#1a1a1a] shadow-2xl select-none border border-white/10 scroll-reveal touch-none">
+  <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=100" alt="Product After" draggable="false" loading="lazy" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+  <span class="absolute right-4 bottom-4 px-3 py-1 bg-black/60 backdrop-blur-sm border border-white/10 text-white rounded-full text-xs font-semibold uppercase tracking-wider z-10 pointer-events-none">After</span>
+
+  <div class="ba-overlay absolute inset-0 before-after-overlay z-20 pointer-events-none" style="clip-path: polygon(0px 0px, 49.2625% 0px, 49.2625% 100%, 0px 100%);">
+    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=60" alt="Product Before" draggable="false" loading="lazy" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+  </div>
+  <span class="absolute left-4 bottom-4 px-3 py-1 bg-black/60 backdrop-blur-sm border border-white/10 text-white rounded-full text-xs font-semibold uppercase tracking-wider z-20 pointer-events-none">Before</span>
+
+  <div class="ba-line absolute top-0 bottom-0 left-1/2 w-0.5 bg-[#00f2fe] shadow-[0_0_10px_rgba(0,242,254,0.6)] z-30 -translate-x-1/2 pointer-events-none" style="left: 49.2625%;"></div>
+  <div class="ba-handle flex cursor-ew-resize -translate-x-1/2 -translate-y-1/2 hover:scale-110 transition-transform duration-200 text-xl text-white bg-gradient-to-br from-[#00f2fe] to-[#0077ff] w-12 h-12 z-40 rounded-full absolute top-1/2 left-1/2 shadow-[0_0_25px_rgba(0,242,254,0.5),inset_0_0_10px_rgba(255,255,255,0.4)] items-center justify-center" style="left: 49.2625%">
+    <iconify-icon icon="solar:round-alt-arrow-left-right-linear" class=""></iconify-icon>
+  </div>
+</div>
+
+                    <!-- Slider 2 -->
+                    <div class="ba-slider relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#1a1a1a] shadow-2xl select-none border border-white/10 scroll-reveal delay-100 touch-none">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=100" alt="Fashion After" draggable="false" loading="lazy" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                        <span class="absolute right-4 bottom-4 px-3 py-1 bg-black/60 backdrop-blur-sm border border-white/10 text-white rounded-full text-xs font-semibold uppercase tracking-wider z-10 pointer-events-none">After</span>
+                        
+                        <div class="ba-overlay absolute inset-0 before-after-overlay z-20 pointer-events-none">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" alt="Fashion Before" draggable="false" loading="lazy" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                        </div>
+                        <span class="absolute left-4 bottom-4 px-3 py-1 bg-black/60 backdrop-blur-sm border border-white/10 text-white rounded-full text-xs font-semibold uppercase tracking-wider z-20 pointer-events-none">Before</span>
+                        
+                        <div class="ba-line absolute top-0 bottom-0 left-1/2 w-0.5 bg-[#00f2fe] shadow-[0_0_10px_rgba(0,242,254,0.6)] z-30 -translate-x-1/2 pointer-events-none"></div>
+                        <div class="ba-handle absolute top-1/2 left-1/2 w-12 h-12 bg-gradient-to-br from-[#00f2fe] to-[#0077ff] rounded-full flex items-center justify-center text-white text-xl z-40 cursor-ew-resize shadow-[0_0_25px_rgba(0,242,254,0.5),inset_0_0_10px_rgba(255,255,255,0.4)] -translate-x-1/2 -translate-y-1/2 hover:scale-110 transition-transform duration-200">
+                            <iconify-icon icon="solar:round-alt-arrow-left-right-linear"></iconify-icon>
+                        </div>
+                    </div>
+
+                    <!-- Slider 3 -->
+                    <div class="ba-slider relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#1a1a1a] shadow-2xl select-none border border-white/10 scroll-reveal delay-200 touch-none">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c543a9e1-f226-4ced-80b0-feb8445a75b9_1600w.jpg" alt="Jewelry After" draggable="false" loading="lazy" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                        <span class="absolute right-4 bottom-4 px-3 py-1 bg-black/60 backdrop-blur-sm border border-white/10 text-white rounded-full text-xs font-semibold uppercase tracking-wider z-10 pointer-events-none">After</span>
+                        
+                        <div class="ba-overlay absolute inset-0 before-after-overlay z-20 pointer-events-none">
+                            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=60" alt="Jewelry Before" draggable="false" loading="lazy" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                        </div>
+                        <span class="absolute left-4 bottom-4 px-3 py-1 bg-black/60 backdrop-blur-sm border border-white/10 text-white rounded-full text-xs font-semibold uppercase tracking-wider z-20 pointer-events-none">Before</span>
+                        
+                        <div class="ba-line absolute top-0 bottom-0 left-1/2 w-0.5 bg-[#00f2fe] shadow-[0_0_10px_rgba(0,242,254,0.6)] z-30 -translate-x-1/2 pointer-events-none"></div>
+                        <div class="ba-handle absolute top-1/2 left-1/2 w-12 h-12 bg-gradient-to-br from-[#00f2fe] to-[#0077ff] rounded-full flex items-center justify-center text-white text-xl z-40 cursor-ew-resize shadow-[0_0_25px_rgba(0,242,254,0.5),inset_0_0_10px_rgba(255,255,255,0.4)] -translate-x-1/2 -translate-y-1/2 hover:scale-110 transition-transform duration-200">
+                            <iconify-icon icon="solar:round-alt-arrow-left-right-linear"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-10 mb-10 text-sm font-medium scroll-reveal">
+                    <div class="flex items-center gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-[#00f2fe] text-xl"></iconify-icon> High-End Retouching</div>
+                    <div class="flex items-center gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-[#00f2fe] text-xl"></iconify-icon> Natural Texture Preservation</div>
+                    <div class="flex items-center gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-[#00f2fe] text-xl"></iconify-icon> E-commerce Ready Output</div>
+                </div>
+
+                <div class="text-center scroll-reveal">
+                    <a href="#contact" class="inline-flex px-8 py-3.5 rounded-full text-sm font-medium bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.3)] hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,242,254,0.4)] transition-all duration-300">Get Your Free Trial</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="py-24" id="portfolio">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="font-['Montserrat'] font-semibold text-3xl md:text-4xl tracking-tight mb-4">Recent <span class="bg-gradient-to-br from-[#00f2fe] to-[#0077ff] bg-clip-text text-transparent">Work</span></h2>
+                    <p class="text-[#a0a0a5] text-base md:text-lg">Browse through my latest edited photos across different industries.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="portfolioGrid">
+                    <!-- Standard Portfolio Items -->
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 scroll-reveal portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Product Retouching" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-1">Headphone Retouch</h4>
+                            <p class="text-[#00f2fe] text-sm">Background Removal</p>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 scroll-reveal delay-100 portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Fashion Retouching" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-1">Apparel Editorial</h4>
+                            <p class="text-[#00f2fe] text-sm">Color Grading</p>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 scroll-reveal delay-200 portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Jewelry Fix" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-1">Diamond Ring Fix</h4>
+                            <p class="text-[#00f2fe] text-sm">High-End Retouch</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Items that will be hidden on initial mobile load or initially hidden on desktop -->
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 scroll-reveal hidden md:block portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Camera Gear" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-1">Camera Gear</h4>
+                            <p class="text-[#00f2fe] text-sm">Shadow Creation</p>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 scroll-reveal delay-100 hidden md:block portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Beauty Portrait" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-1">Beauty Portrait</h4>
+                            <p class="text-[#00f2fe] text-sm">Skin Retouching</p>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 scroll-reveal delay-200 hidden md:block portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Luxury Watch" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-1">Luxury Watch</h4>
+                            <p class="text-[#00f2fe] text-sm">Metal Retouching</p>
+                        </div>
+                    </div>
+
+                    <!-- Hidden toggled items -->
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 hidden toggleable-item">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Smart Watch" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-1">Smart Watch</h4>
+                            <p class="text-[#00f2fe] text-sm">Ghost Mannequin</p>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 hidden toggleable-item">
+                        <img src="https://images.unsplash.com/photo-1611042553365-9b101441c135?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Sneaker Edit" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-1">Sneaker Edit</h4>
+                            <p class="text-[#00f2fe] text-sm">Clipping Path</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 scroll-reveal">
+                    <button class="inline-flex px-8 py-3.5 rounded-full text-sm font-medium border border-white/10 backdrop-blur-md text-white hover:bg-white/5 hover:border-[#00f2fe] transition-all duration-300" id="togglePortfolioBtn">
+                        See More
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Working Process -->
+        <section class="py-24 bg-white/[0.01]">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="font-['Montserrat'] font-semibold text-3xl md:text-4xl tracking-tight mb-4">Simple <span class="bg-gradient-to-br from-[#00f2fe] to-[#0077ff] bg-clip-text text-transparent">Workflow</span></h2>
+                    <p class="text-[#a0a0a5] text-base md:text-lg">How we take your images from raw to ready-to-publish in 3 easy steps.</p>
+                </div>
+                
+                <div class="relative flex flex-col md:flex-row justify-between items-center gap-12 md:gap-0 scroll-reveal">
+                    <!-- Line connector -->
+                    <div class="hidden md:block absolute top-[40px] left-[15%] w-[70%] h-[1px] bg-white/10 z-0 border-t border-dashed border-white/20"></div>
+
+                    <div class="text-center relative z-10 w-[260px] flex flex-col items-center">
+                        <div class="w-20 h-20 bg-[#0a0a0c] border border-[#00f2fe]/50 rounded-full flex items-center justify-center text-3xl text-[#00f2fe] mb-6 shadow-[0_0_20px_rgba(0,242,254,0.1)]">
+                            <iconify-icon icon="solar:cloud-upload-linear"></iconify-icon>
+                        </div>
+                        <h4 class="font-['Montserrat'] font-semibold text-lg mb-3">1. Upload Images</h4>
+                        <p class="text-[#a0a0a5] text-sm leading-relaxed">Send your raw files via Dropbox, Drive, or WeTransfer with your instructions.</p>
+                    </div>
+
+                    <div class="text-center relative z-10 w-[260px] flex flex-col items-center">
+                        <div class="w-20 h-20 bg-[#0a0a0c] border border-[#00f2fe]/50 rounded-full flex items-center justify-center text-3xl text-[#00f2fe] mb-6 shadow-[0_0_20px_rgba(0,242,254,0.1)]">
+                            <iconify-icon icon="solar:magic-stick-linear"></iconify-icon>
+                        </div>
+                        <h4 class="font-['Montserrat'] font-semibold text-lg mb-3">2. Professional Editing</h4>
+                        <p class="text-[#a0a0a5] text-sm leading-relaxed">I apply precise edits, retouching, and quality checks based on your requirements.</p>
+                    </div>
+
+                    <div class="text-center relative z-10 w-[260px] flex flex-col items-center">
+                        <div class="w-20 h-20 bg-[#0a0a0c] border border-[#00f2fe]/50 rounded-full flex items-center justify-center text-3xl text-[#00f2fe] mb-6 shadow-[0_0_20px_rgba(0,242,254,0.1)]">
+                            <iconify-icon icon="solar:cloud-download-linear"></iconify-icon>
+                        </div>
+                        <h4 class="font-['Montserrat'] font-semibold text-lg mb-3">3. Download Files</h4>
+                        <p class="text-[#a0a0a5] text-sm leading-relaxed">Receive your flawless, e-commerce ready images within the agreed timeframe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section (Advanced 8-Card Carousel) -->
+        <section class="pt-24 pb-24" id="pricing">
+            <div class="max-w-7xl mr-auto ml-auto pr-6 pl-6">
+    <div class="text-center mb-16 scroll-reveal">
+        <h2 class="font-['Montserrat'] font-medium text-3xl md:text-4xl tracking-tight mb-4">Transparent <span class="bg-gradient-to-br from-[#00f2fe] to-[#0077ff] bg-clip-text text-transparent">Pricing</span></h2>
+        <p class="text-[#a0a0a5] text-base md:text-lg font-normal">Quality editing solutions scaled to fit your business volume. Explore all our services.</p>
+    </div>
+
+    <div class="relative px-0 md:px-16 scroll-reveal">
+        <button id="prevBtn" class="flex absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-11 md:h-11 rounded-full bg-[#0a0a0c]/80 md:bg-white/5 border border-white/10 text-white items-center justify-center hover:bg-gradient-to-br hover:from-[#00f2fe] hover:to-[#0077ff] hover:border-transparent hover:shadow-[0_0_15px_rgba(0,242,254,0.3)] transition-all duration-300 z-20 backdrop-blur-md" aria-label="Previous Slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg>
+        </button>
+        
+        <div class="overflow-hidden w-full hide-scrollbar" id="pricingContainer">
+            <div class="flex gap-6 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]" id="pricingTrack">
+                
+                <!-- Card 1 -->
+                <div class="pricing-card w-full md:min-w-[calc(33.3333%-1rem)] shrink-0 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md flex flex-col hover:border-[#00f2fe]/50 hover:shadow-[0_15px_40px_rgba(0,242,254,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Clipping Path" loading="lazy" class="w-full h-44 rounded-xl object-cover mb-6 border border-white/10">
+                    <div class="border-b border-white/10 pb-5 mb-5">
+                        <h3 class="text-[#00f2fe] font-['Montserrat'] font-medium text-lg mb-2">Clipping Path Services</h3>
+                        <div class="font-['Montserrat'] font-semibold text-3xl tracking-tight text-white">
+                            <span class="text-sm font-normal text-[#a0a0a5] block mb-1">Starts From</span> $0.50
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-3 text-sm font-normal">
+                        <li class="flex justify-between items-center text-white">Basic Clipping Path <span class="text-[#a0a0a5]">$0.50</span></li>
+                        <li class="flex justify-between items-center text-white">Simple Clipping Path <span class="text-[#a0a0a5]">$0.99</span></li>
+                        <li class="flex justify-between items-center text-white">Medium Clipping Path <span class="text-[#a0a0a5]">$1.50</span></li>
+                        <li class="flex justify-between items-center text-white">Complex Clipping Path <span class="text-[#a0a0a5]">$2.50</span></li>
+                        <li class="flex justify-between items-center text-white">Super Complex <span class="text-[#a0a0a5]">$4.00+</span></li>
                     </ul>
-                    <a href="#" class="btn btn-outline price-btn">Get Started</a>
+                    <div class="mt-8 flex flex-col gap-3">
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.2)] hover:-translate-y-0.5 transition-transform">FREE TRIAL</a>
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal border border-white/10 text-white hover:bg-white/5 transition-colors">GET A QUOTE</a>
+                    </div>
                 </div>
 
-                <!-- Standard (Highlighted) -->
-                <div class="price-card popular reveal" style="transition-delay: 0.1s;">
-                    <div class="price-header">
-                        <h3>Standard Retouch</h3>
-                        <div class="price">$1.50<span>/img</span></div>
+                <!-- Card 2 -->
+                <div class="pricing-card w-full md:min-w-[calc(33.3333%-1rem)] shrink-0 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md flex flex-col hover:border-[#00f2fe]/50 hover:shadow-[0_15px_40px_rgba(0,242,254,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Shadow" loading="lazy" class="w-full h-44 rounded-xl object-cover mb-6 border border-white/10">
+                    <div class="border-b border-white/10 pb-5 mb-5">
+                        <h3 class="text-[#00f2fe] font-['Montserrat'] font-medium text-lg mb-2">Photoshop Shadow</h3>
+                        <div class="font-['Montserrat'] font-semibold text-3xl tracking-tight text-white">
+                            <span class="text-sm font-normal text-[#a0a0a5] block mb-1">Starts From</span> $0.50
+                        </div>
                     </div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Advanced Clipping Path</li>
-                        <li><i class="fas fa-check"></i> Dust & Scratch Removal</li>
-                        <li><i class="fas fa-check"></i> Natural Drop Shadow</li>
-                        <li><i class="fas fa-check"></i> Color Correction</li>
-                        <li><i class="fas fa-check"></i> 24h Turnaround</li>
+                    <ul class="flex-grow space-y-3 text-sm font-normal">
+                        <li class="flex justify-between items-center text-white">Drop Shadow <span class="text-[#a0a0a5]">$0.50</span></li>
+                        <li class="flex justify-between items-center text-white">Natural Shadow <span class="text-[#a0a0a5]">$0.99</span></li>
+                        <li class="flex justify-between items-center text-white">Reflection Shadow <span class="text-[#a0a0a5]">$1.50</span></li>
+                        <li class="flex justify-between items-center text-white">Existing Shadow <span class="text-[#a0a0a5]">$1.99</span></li>
+                        <li class="flex justify-between items-center text-white">Floating Shadow <span class="text-[#a0a0a5]">$2.50+</span></li>
                     </ul>
-                    <a href="#" class="btn btn-primary price-btn">Most Popular</a>
+                    <div class="mt-8 flex flex-col gap-3">
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.2)] hover:-translate-y-0.5 transition-transform">FREE TRIAL</a>
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal border border-white/10 text-white hover:bg-white/5 transition-colors">GET A QUOTE</a>
+                    </div>
                 </div>
 
-                <!-- Premium -->
-                <div class="price-card reveal" style="transition-delay: 0.2s;">
-                    <div class="price-header">
-                        <h3>High-End Retouch</h3>
-                        <div class="price">Custom</div>
+                <!-- Card 3 -->
+                <div class="pricing-card w-full md:min-w-[calc(33.3333%-1rem)] shrink-0 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md flex flex-col hover:border-[#00f2fe]/50 hover:shadow-[0_15px_40px_rgba(0,242,254,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Mannequin" loading="lazy" class="w-full h-44 rounded-xl object-cover mb-6 border border-white/10">
+                    <div class="border-b border-white/10 pb-5 mb-5">
+                        <h3 class="text-[#00f2fe] font-['Montserrat'] font-medium text-lg mb-2">Ghost Mannequin</h3>
+                        <div class="font-['Montserrat'] font-semibold text-3xl tracking-tight text-white">
+                            <span class="text-sm font-normal text-[#a0a0a5] block mb-1">Starts From</span> $0.99
+                        </div>
                     </div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> High-end Skin/Product Retouch</li>
-                        <li><i class="fas fa-check"></i> Ghost Mannequin</li>
-                        <li><i class="fas fa-check"></i> Complex Masking</li>
-                        <li><i class="fas fa-check"></i> Image Manipulation</li>
-                        <li><i class="fas fa-check"></i> Dedicated Support</li>
+                    <ul class="flex-grow space-y-3 text-sm font-normal">
+                        <li class="flex justify-between items-center text-white">Neck Joint <span class="text-[#a0a0a5]">$0.99</span></li>
+                        <li class="flex justify-between items-center text-white">Bottom Joint <span class="text-[#a0a0a5]">$1.50</span></li>
+                        <li class="flex justify-between items-center text-white">Sleeve Joint <span class="text-[#a0a0a5]">$1.99</span></li>
+                        <li class="flex justify-between items-center text-white">3D Mannequin <span class="text-[#a0a0a5]">$2.50</span></li>
+                        <li class="flex justify-between items-center text-white">Symmetrical Edit <span class="text-[#a0a0a5]">$3.50+</span></li>
                     </ul>
-                    <a href="#" class="btn btn-outline price-btn">Contact Me</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section-padding testimonial-section" id="testimonials">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Trusted by <span class="text-gradient">Clients Worldwide</span></h2>
-                <p>See what my clients say about my photo editing services.</p>
-            </div>
-
-            <div class="testimonial-slider-container reveal">
-                <div class="testimonial-track" id="testi-track">
-                    <!-- Card 1 -->
-                    <div class="testimonial-card">
-                        <div class="testi-rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testi-text">"Absolutely brilliant work! The attention to detail on our jewelry photos was incredible. They look so premium now. Highly recommended for any e-commerce brand."</p>
-                        <div class="testi-client">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sarah Jenkins">
-                            <div class="testi-info">
-                                <h4>Sarah Jenkins</h4>
-                                <span>United States</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="testimonial-card">
-                        <div class="testi-rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p class="testi-text">"Fast, reliable, and highly professional. The ghost mannequin edits were perfectly executed, maintaining the natural fabric texture without looking artificial."</p>
-                        <div class="testi-client">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="David Miller">
-                            <div class="testi-info">
-                                <h4>David Miller</h4>
-                                <span>United Kingdom</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="testimonial-card">
-                        <div class="testi-rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testi-text">"I've worked with many editors, but the color correction and skin retouching here is next level. Everything feels completely natural yet flawlessly polished."</p>
-                        <div class="testi-client">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Elena Rodriguez">
-                            <div class="testi-info">
-                                <h4>Elena Rodriguez</h4>
-                                <span>Spain</span>
-                            </div>
-                        </div>
+                    <div class="mt-8 flex flex-col gap-3">
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.2)] hover:-translate-y-0.5 transition-transform">FREE TRIAL</a>
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal border border-white/10 text-white hover:bg-white/5 transition-colors">GET A QUOTE</a>
                     </div>
                 </div>
 
-                <!-- Slider Controls -->
-                <div class="slider-controls" id="testi-controls">
-                    <!-- Dots will be generated dynamically via JS based on window width -->
+                <!-- Card 4 -->
+                <div class="pricing-card w-full md:min-w-[calc(33.3333%-1rem)] shrink-0 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md flex flex-col hover:border-[#00f2fe]/50 hover:shadow-[0_15px_40px_rgba(0,242,254,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Masking" loading="lazy" class="w-full h-44 rounded-xl object-cover mb-6 border border-white/10">
+                    <div class="border-b border-white/10 pb-5 mb-5">
+                        <h3 class="text-[#00f2fe] font-['Montserrat'] font-medium text-lg mb-2">Image Masking</h3>
+                        <div class="font-['Montserrat'] font-semibold text-3xl tracking-tight text-white">
+                            <span class="text-sm font-normal text-[#a0a0a5] block mb-1">Starts From</span> $1.50
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-3 text-sm font-normal">
+                        <li class="flex justify-between items-center text-white">Hair Masking <span class="text-[#a0a0a5]">$1.50</span></li>
+                        <li class="flex justify-between items-center text-white">Fur Masking <span class="text-[#a0a0a5]">$1.99</span></li>
+                        <li class="flex justify-between items-center text-white">Transparent Object <span class="text-[#a0a0a5]">$2.50</span></li>
+                        <li class="flex justify-between items-center text-white">Alpha Channel <span class="text-[#a0a0a5]">$3.00</span></li>
+                        <li class="flex justify-between items-center text-white">Color Masking <span class="text-[#a0a0a5]">$3.50+</span></li>
+                    </ul>
+                    <div class="mt-8 flex flex-col gap-3">
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.2)] hover:-translate-y-0.5 transition-transform">FREE TRIAL</a>
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal border border-white/10 text-white hover:bg-white/5 transition-colors">GET A QUOTE</a>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="pricing-card w-full md:min-w-[calc(33.3333%-1rem)] shrink-0 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md flex flex-col hover:border-[#00f2fe]/50 hover:shadow-[0_15px_40px_rgba(0,242,254,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" alt="Color Correction" loading="lazy" class="w-full h-44 rounded-xl object-cover mb-6 border border-white/10">
+                    <div class="border-b border-white/10 pb-5 mb-5">
+                        <h3 class="text-[#00f2fe] font-['Montserrat'] font-medium text-lg mb-2">Color Correction</h3>
+                        <div class="font-['Montserrat'] font-semibold text-3xl tracking-tight text-white">
+                            <span class="text-sm font-normal text-[#a0a0a5] block mb-1">Starts From</span> $0.99
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-3 text-sm font-normal">
+                        <li class="flex justify-between items-center text-white">Basic Color Fix <span class="text-[#a0a0a5]">$0.99</span></li>
+                        <li class="flex justify-between items-center text-white">Color Matching <span class="text-[#a0a0a5]">$1.50</span></li>
+                        <li class="flex justify-between items-center text-white">Color Variant <span class="text-[#a0a0a5]">$2.00</span></li>
+                        <li class="flex justify-between items-center text-white">Exposure Fix <span class="text-[#a0a0a5]">$2.50</span></li>
+                        <li class="flex justify-between items-center text-white">Advanced Grading <span class="text-[#a0a0a5]">$3.00+</span></li>
+                    </ul>
+                    <div class="mt-8 flex flex-col gap-3">
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.2)] hover:-translate-y-0.5 transition-transform">FREE TRIAL</a>
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal border border-white/10 text-white hover:bg-white/5 transition-colors">GET A QUOTE</a>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="pricing-card w-full md:min-w-[calc(33.3333%-1rem)] shrink-0 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md flex flex-col hover:border-[#00f2fe]/50 hover:shadow-[0_15px_40px_rgba(0,242,254,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="High End" loading="lazy" class="w-full h-44 rounded-xl object-cover mb-6 border border-white/10">
+                    <div class="border-b border-white/10 pb-5 mb-5">
+                        <h3 class="text-[#00f2fe] font-['Montserrat'] font-medium text-lg mb-2">High-End Retouching</h3>
+                        <div class="font-['Montserrat'] font-semibold text-3xl tracking-tight text-white">
+                            <span class="text-sm font-normal text-[#a0a0a5] block mb-1">Starts From</span> $3.00
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-3 text-sm font-normal">
+                        <li class="flex justify-between items-center text-white">Beauty Retouching <span class="text-[#a0a0a5]">$3.00</span></li>
+                        <li class="flex justify-between items-center text-white">Skin Smoothing <span class="text-[#a0a0a5]">$4.00</span></li>
+                        <li class="flex justify-between items-center text-white">Frequency Separation <span class="text-[#a0a0a5]">$5.50</span></li>
+                        <li class="flex justify-between items-center text-white">Stray Hair Removal <span class="text-[#a0a0a5]">$6.00</span></li>
+                        <li class="flex justify-between items-center text-white">Magazine Quality <span class="text-[#a0a0a5]">$8.00+</span></li>
+                    </ul>
+                    <div class="mt-8 flex flex-col gap-3">
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.2)] hover:-translate-y-0.5 transition-transform">FREE TRIAL</a>
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal border border-white/10 text-white hover:bg-white/5 transition-colors">GET A QUOTE</a>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="pricing-card w-full md:min-w-[calc(33.3333%-1rem)] shrink-0 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md flex flex-col hover:border-[#00f2fe]/50 hover:shadow-[0_15px_40px_rgba(0,242,254,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Ecommerce" loading="lazy" class="w-full h-44 rounded-xl object-cover mb-6 border border-white/10">
+                    <div class="border-b border-white/10 pb-5 mb-5">
+                        <h3 class="text-[#00f2fe] font-['Montserrat'] font-medium text-lg mb-2">E-commerce Retouch</h3>
+                        <div class="font-['Montserrat'] font-semibold text-3xl tracking-tight text-white">
+                            <span class="text-sm font-normal text-[#a0a0a5] block mb-1">Starts From</span> $1.20
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-3 text-sm font-normal">
+                        <li class="flex justify-between items-center text-white">Dust Clean <span class="text-[#a0a0a5]">$1.20</span></li>
+                        <li class="flex justify-between items-center text-white">Wrinkle Removal <span class="text-[#a0a0a5]">$1.50</span></li>
+                        <li class="flex justify-between items-center text-white">Shape Liquify <span class="text-[#a0a0a5]">$2.00</span></li>
+                        <li class="flex justify-between items-center text-white">Label Alignment <span class="text-[#a0a0a5]">$2.50</span></li>
+                        <li class="flex justify-between items-center text-white">Full Product Edit <span class="text-[#a0a0a5]">$3.50+</span></li>
+                    </ul>
+                    <div class="mt-8 flex flex-col gap-3">
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.2)] hover:-translate-y-0.5 transition-transform">FREE TRIAL</a>
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal border border-white/10 text-white hover:bg-white/5 transition-colors">GET A QUOTE</a>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="pricing-card w-full md:min-w-[calc(33.3333%-1rem)] shrink-0 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md flex flex-col hover:border-[#00f2fe]/50 hover:shadow-[0_15px_40px_rgba(0,242,254,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/30104e3c-5eea-4b93-93e9-5313698a7156_1600w.webp" alt="Jewelry" loading="lazy" class="w-full h-44 rounded-xl object-cover mb-6 border border-white/10">
+                    <div class="border-b border-white/10 pb-5 mb-5">
+                        <h3 class="text-[#00f2fe] font-['Montserrat'] font-medium text-lg mb-2">Jewelry Retouching</h3>
+                        <div class="font-['Montserrat'] font-semibold text-3xl tracking-tight text-white">
+                            <span class="text-sm font-normal text-[#a0a0a5] block mb-1">Starts From</span> $3.50
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-3 text-sm font-normal">
+                        <li class="flex justify-between items-center text-white">Stone Enhancement <span class="text-[#a0a0a5]">$3.50</span></li>
+                        <li class="flex justify-between items-center text-white">Metal Smoothing <span class="text-[#a0a0a5]">$4.50</span></li>
+                        <li class="flex justify-between items-center text-white">Reflection Control <span class="text-[#a0a0a5]">$5.50</span></li>
+                        <li class="flex justify-between items-center text-white">Focus Stacking <span class="text-[#a0a0a5]">$7.00</span></li>
+                        <li class="flex justify-between items-center text-white">Premium Jewelry <span class="text-[#a0a0a5]">$9.00+</span></li>
+                    </ul>
+                    <div class="mt-8 flex flex-col gap-3">
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.2)] hover:-translate-y-0.5 transition-transform">FREE TRIAL</a>
+                        <a href="#contact" class="w-full py-3 rounded-full text-center text-sm font-normal border border-white/10 text-white hover:bg-white/5 transition-colors">GET A QUOTE</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Final CTA Banner -->
-    <section class="reveal">
-        <div class="cta-banner">
-            <h2>Ready to Elevate Your Visuals?</h2>
-            <p>Send me 1-2 images and I will edit them for free. See the quality before you hire.</p>
-            <a href="#contact" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Get Your First Trial Today</a>
-        </div>
-    </section>
+        <button id="nextBtn" class="flex absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-11 md:h-11 rounded-full bg-[#0a0a0c]/80 md:bg-white/5 border border-white/10 text-white items-center justify-center hover:bg-gradient-to-br hover:from-[#00f2fe] hover:to-[#0077ff] hover:border-transparent hover:shadow-[0_0_15px_rgba(0,242,254,0.3)] transition-all duration-300 z-20 backdrop-blur-md" aria-label="Next Slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg>
+        </button>
+    </div>
+    
+    <div class="flex justify-center gap-2 mt-8 scroll-reveal" id="pricingDots"><button class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#00f2fe] scale-125 shadow-[0_0_10px_rgba(0,242,254,0.5)]" aria-label="Go to slide 1"></button><button class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/20 hover:bg-white/50" aria-label="Go to slide 2"></button><button class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/20 hover:bg-white/50" aria-label="Go to slide 3"></button></div>
+</div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="max-w-7xl mx-auto px-6 mb-24 scroll-reveal">
+            <div class="relative rounded-[2rem] overflow-hidden text-center py-20 px-6 border border-white/10 shadow-2xl" style="background-image: url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-[#0a0a0c]/90"></div>
+                <div class="relative z-10">
+                    <h2 class="font-['Montserrat'] font-semibold text-3xl md:text-5xl tracking-tight mb-4 text-white">Ready to Elevate Your Visuals?</h2>
+                    <p class="text-[#a0a0a5] text-base md:text-lg mb-8 max-w-2xl mx-auto">Send me 1-2 images and I will edit them for free. See the quality before you hire.</p>
+                    <a href="#contact" class="inline-flex px-8 py-3.5 rounded-full text-sm font-medium bg-gradient-to-br from-[#00f2fe] to-[#0077ff] text-white shadow-[0_4px_15px_rgba(0,242,254,0.3)] hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,242,254,0.4)] transition-all duration-300">
+                        Get Your First Trial Today
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 20px;">Pixel<span class="text-gradient">Pro</span></div>
-                    <p style="margin-bottom: 20px; max-width: 300px;">Delivering world-class photo editing and retouching services to e-commerce brands, photographers, and agencies globally.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-behance"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
+    <footer class="border-t border-white/10 bg-[#050505] pt-20 pb-10" id="contact">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-5">
+                    <a href="#home" class="font-['Montserrat'] font-semibold tracking-tighter text-xl text-white block mb-6">PIXELPRO</a>
+                    <p class="text-[#a0a0a5] text-sm leading-relaxed mb-6 max-w-sm">Delivering world-class photo editing and retouching services to e-commerce brands, photographers, and agencies globally.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#00f2fe] hover:border-transparent transition-all duration-300"><iconify-icon icon="solar:global-linear" class=""></iconify-icon></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#00f2fe] hover:border-transparent transition-all duration-300"><iconify-icon icon="solar:camera-linear"></iconify-icon></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#00f2fe] hover:border-transparent transition-all duration-300"><iconify-icon icon="solar:letter-linear"></iconify-icon></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#pricing">Pricing</a>
+                <div class="md:col-span-2">
+                    <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-6">Quick Links</h4>
+                    <nav class="flex flex-col gap-3 text-sm" aria-label="Footer Quick Links">
+                        <a href="#home" class="text-[#a0a0a5] hover:text-[#00f2fe] transition-colors">Home</a>
+                        <a href="#services" class="text-[#a0a0a5] hover:text-[#00f2fe] transition-colors">Services</a>
+                        <a href="#portfolio" class="text-[#a0a0a5] hover:text-[#00f2fe] transition-colors">Portfolio</a>
+                        <a href="#pricing" class="text-[#a0a0a5] hover:text-[#00f2fe] transition-colors">Pricing</a>
+                    </nav>
                 </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <a href="#">Clipping Path</a>
-                    <a href="#">Photo Retouching</a>
-                    <a href="#">Ghost Mannequin</a>
-                    <a href="#">Color Correction</a>
+                <div class="md:col-span-2">
+                    <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-6">Services</h4>
+                    <nav class="flex flex-col gap-3 text-sm" aria-label="Footer Services">
+                        <a href="#" class="text-[#a0a0a5] hover:text-[#00f2fe] transition-colors">Clipping Path</a>
+                        <a href="#" class="text-[#a0a0a5] hover:text-[#00f2fe] transition-colors">Photo Retouching</a>
+                        <a href="#" class="text-[#a0a0a5] hover:text-[#00f2fe] transition-colors">Ghost Mannequin</a>
+                        <a href="#" class="text-[#a0a0a5] hover:text-[#00f2fe] transition-colors">Color Correction</a>
+                    </nav>
                 </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p><i class="fas fa-envelope" style="color: var(--teal-light); width: 20px;"></i> hello@pixelpro.com</p>
-                    <p><i class="fas fa-phone" style="color: var(--teal-light); width: 20px;"></i> +1 (555) 123-4567</p>
-                    <p><i class="fas fa-map-marker-alt" style="color: var(--teal-light); width: 20px;"></i> New York, USA</p>
+                <div class="md:col-span-3">
+                    <h4 class="font-['Montserrat'] font-semibold text-lg text-white mb-6">Contact Info</h4>
+                    <div class="flex flex-col gap-4 text-sm text-[#a0a0a5]">
+                        <p class="flex items-center gap-3"><iconify-icon icon="solar:letter-linear" class="text-[#00f2fe] text-xl"></iconify-icon> hello@pixelpro.com</p>
+                        <p class="flex items-center gap-3"><iconify-icon icon="solar:phone-linear" class="text-[#00f2fe] text-xl"></iconify-icon> +1 (555) 123-4567</p>
+                        <p class="flex items-center gap-3"><iconify-icon icon="solar:map-point-linear" class="text-[#00f2fe] text-xl"></iconify-icon> New York, USA</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 PixelPro Photo Editing. All rights reserved.</p>
+            
+            <div class="border-t border-white/10 pt-8 text-center flex flex-col items-center gap-4">
+                <p class="text-[#a0a0a5] text-sm">© 2024 PixelPro. All rights reserved.</p>
+                <div class="flex gap-4 text-3xl text-white/50 gap-x-4 gap-y-4 justify-center">
+                    <iconify-icon icon="solar:card-linear" class="hover:text-white transition-colors" width="30" height="30" style="color: rgb(255, 255, 255)"></iconify-icon>
+                    <iconify-icon icon="solar:wallet-money-linear" class="hover:text-white transition-colors"></iconify-icon>
+                    <iconify-icon icon="solar:tag-price-linear" class="hover:text-white transition-colors"></iconify-icon>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Interactivity -->
+    <!-- JavaScript optimized for stability, performance & UX -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            /* --- Before/After Slider Logic --- */
-            const sliders = document.querySelectorAll('.ba-wrapper');
+            // --- 1. Mobile Hamburger Menu ---
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
             
+            const toggleMenu = () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                if (!isExpanded) {
+                    mobileMenu.classList.remove('-translate-x-full');
+                } else {
+                    mobileMenu.classList.add('-translate-x-full');
+                }
+            };
+
+            menuToggle.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.add('-translate-x-full');
+                });
+            });
+
+            // --- 2. Scroll Reveal Intersection Observer ---
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10', 'translate-y-8', 'translate-y-6');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+            // --- 3. Before/After Sliders Refactored ---
+            const sliders = document.querySelectorAll('.ba-slider');
             sliders.forEach(slider => {
                 const overlay = slider.querySelector('.ba-overlay');
                 const handle = slider.querySelector('.ba-handle');
-                const line = slider.querySelector('.ba-slider-line');
+                const line = slider.querySelector('.ba-line');
                 let isDragging = false;
 
                 const moveSlider = (clientX) => {
                     const rect = slider.getBoundingClientRect();
-                    let x = clientX - rect.left;
-                    
-                    x = Math.max(0, Math.min(x, rect.width));
+                    let x = Math.max(0, Math.min(clientX - rect.left, rect.width));
                     const percent = (x / rect.width) * 100;
-                    
                     overlay.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
                     line.style.left = `${percent}%`;
                     handle.style.left = `${percent}%`;
                 };
 
-                handle.addEventListener('mousedown', (e) => {
-                    isDragging = true;
-                    e.preventDefault();
-                });
-                
-                window.addEventListener('mouseup', () => { isDragging = false; });
-                window.addEventListener('mousemove', (e) => {
+                const startDrag = (e) => { isDragging = true; };
+                const stopDrag = () => { isDragging = false; };
+                const handleDrag = (e) => {
                     if (!isDragging) return;
-                    moveSlider(e.clientX);
-                });
+                    moveSlider(e.type.includes('mouse') ? e.clientX : e.touches[0].clientX);
+                };
 
-                handle.addEventListener('touchstart', (e) => { isDragging = true; }, {passive: true});
-                window.addEventListener('touchend', () => { isDragging = false; });
-                window.addEventListener('touchmove', (e) => {
-                    if (!isDragging) return;
-                    if(e.cancelable) e.preventDefault(); 
-                    moveSlider(e.touches[0].clientX);
-                }, {passive: false});
+                handle.addEventListener('mousedown', startDrag);
+                handle.addEventListener('touchstart', startDrag, { passive: true });
+                
+                window.addEventListener('mouseup', stopDrag);
+                window.addEventListener('touchend', stopDrag);
+                
+                window.addEventListener('mousemove', handleDrag);
+                window.addEventListener('touchmove', handleDrag, { passive: true });
             });
 
-            /* --- Testimonial Slider Logic --- */
-            const testiTrack = document.getElementById('testi-track');
-            const testiControls = document.getElementById('testi-controls');
-            const testiCards = document.querySelectorAll('.testimonial-card');
-            
-            let testiIndex = 0;
-            let cardsPerView = 3;
+            // --- 4. Portfolio See More Toggle ---
+            const togglePortfolioBtn = document.getElementById('togglePortfolioBtn');
+            const hiddenItems = document.querySelectorAll('.toggleable-item');
+            const portfolioGrid = document.getElementById('portfolioGrid');
+            let isPortfolioExpanded = false;
 
-            function initTestiSlider() {
-                if (!testiTrack) return;
-                
-                if (window.innerWidth <= 768) {
-                    cardsPerView = 1;
-                } else if (window.innerWidth <= 1024) {
-                    cardsPerView = 2;
-                } else {
-                    cardsPerView = 3;
-                }
-
-                const totalDots = Math.max(1, testiCards.length - cardsPerView + 1);
-                
-                testiControls.innerHTML = '';
-                if (totalDots > 1) {
-                    for (let i = 0; i < totalDots; i++) {
-                        const dot = document.createElement('div');
-                        dot.classList.add('slider-dot');
-                        if (i === 0) dot.classList.add('active');
-                        dot.addEventListener('click', () => goToTestiSlide(i));
-                        testiControls.appendChild(dot);
-                    }
-                }
-                
-                goToTestiSlide(0);
-            }
-
-            function goToTestiSlide(index) {
-                if(testiCards.length === 0) return;
-                const gap = 30; // Matches CSS gap
-                const cardWidth = testiCards[0].offsetWidth;
-                
-                testiIndex = index;
-                const offset = -(testiIndex * (cardWidth + gap));
-                testiTrack.style.transform = `translateX(${offset}px)`;
-                
-                const dots = document.querySelectorAll('#testi-controls .slider-dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === testiIndex);
-                });
-            }
-
-            window.addEventListener('resize', initTestiSlider);
-            initTestiSlider();
-
-            /* --- Scroll Reveal Animation Logic --- */
-            const revealElements = document.querySelectorAll('.reveal');
-            const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                revealElements.forEach(el => {
-                    const elementTop = el.getBoundingClientRect().top;
-                    const elementVisible = 100; 
-                    if (elementTop < windowHeight - elementVisible) {
-                        el.classList.add('active');
-                    }
-                });
-            };
-
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll();
-
-            /* --- Portfolio Filtering Logic --- */
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
-                    const filterValue = btn.getAttribute('data-filter');
-
-                    portfolioItems.forEach(item => {
-                        if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                            item.style.display = 'block';
-                            setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+            if (togglePortfolioBtn) {
+                togglePortfolioBtn.addEventListener('click', () => {
+                    isPortfolioExpanded = !isPortfolioExpanded;
+                    hiddenItems.forEach(item => {
+                        if(isPortfolioExpanded) {
+                            item.classList.remove('hidden');
+                            item.classList.add('opacity-100', 'translate-y-0');
+                            setTimeout(() => { item.classList.remove('opacity-0', 'translate-y-8'); }, 10);
                         } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'scale(0.8)';
-                            setTimeout(() => { item.style.display = 'none'; }, 300);
+                            item.classList.add('hidden');
                         }
                     });
+                    
+                    togglePortfolioBtn.innerText = isPortfolioExpanded ? 'Show Less' : 'See More';
+                    if (!isPortfolioExpanded) {
+                        document.querySelector('#portfolio').scrollIntoView({ behavior: 'smooth' });
+                    }
                 });
+            }
+
+            // --- 5. Pricing Carousel Logic ---
+            const pricingTrack = document.getElementById('pricingTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('pricingDots');
+            const cards = document.querySelectorAll('.pricing-card');
+            const totalCards = cards.length;
+            
+            let currentIndex = 0;
+            let resizeDebounce;
+
+            const getCarouselParams = () => {
+                const isMobile = window.innerWidth < 768;
+                const cardsPerView = isMobile ? 1 : 3;
+                const maxIndex = Math.ceil(totalCards / cardsPerView) - 1;
+                return { isMobile, cardsPerView, maxIndex };
+            };
+
+            const updateCarousel = () => {
+                const { isMobile, cardsPerView, maxIndex } = getCarouselParams();
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                if (currentIndex < 0) currentIndex = 0;
+
+                const cardWidth = cards[0].offsetWidth;
+                const gap = isMobile ? 24 : 24; // Tailwind gap-6 = 1.5rem = 24px
+                const slideAmount = (cardWidth + gap) * cardsPerView * currentIndex;
+                
+                pricingTrack.style.transform = `translateX(-${slideAmount}px)`;
+
+                // Dynamic Dots Pagination
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i <= maxIndex; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-[#00f2fe] scale-125 shadow-[0_0_10px_rgba(0,242,254,0.5)]' : 'bg-white/20 hover:bg-white/50'}`;
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateCarousel();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            };
+
+            if (nextBtn && prevBtn) {
+                nextBtn.addEventListener('click', () => {
+                    const { maxIndex } = getCarouselParams();
+                    currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+                    updateCarousel();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    const { maxIndex } = getCarouselParams();
+                    currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
+                    updateCarousel();
+                });
+            }
+
+            // Sync on Resize
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeDebounce);
+                resizeDebounce = setTimeout(updateCarousel, 150);
             });
             
-            /* --- Smooth Scrolling for anchor links --- */
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
+            // Initial call
+            updateCarousel();
         });
     </script>
-</body>
-</html>
+
+</body></html>
