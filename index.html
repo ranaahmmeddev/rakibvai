@@ -1,1 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Photo Editing & Retouching Services</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --text-main: #ffffff;
+            --text-muted: #a0a0a5;
+            --teal-gradient: linear-gradient(135deg, #00f2fe 0%, #0077ff 100%);
+            --teal-light: #00f2fe;
+            --teal-glow: rgba(0, 242, 254, 0.3);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .text-gradient {
+            background: var(--teal-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--teal-gradient);
+            color: white;
+            box-shadow: 0 4px 15px var(--teal-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--teal-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--teal-light);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: var(--teal-light);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Before/After Slider Component */
+        .ba-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            user-select: none;
+            aspect-ratio: 4/5;
+            background: #1a1a1a;
+        }
+
+        .ba-wrapper.hero-slider {
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
+        }
+
+        .ba-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .ba-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+            z-index: 2;
+        }
+
+        .ba-slider-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--teal-light);
+            z-index: 3;
+            transform: translateX(-50%);
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+        }
+
+        .ba-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: var(--teal-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            cursor: ew-resize;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5), 0 0 10px rgba(0, 242, 254, 0.4);
+            color: white;
+            font-size: 16px;
+        }
+
+        .ba-label {
+            position: absolute;
+            bottom: 20px;
+            padding: 6px 16px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            color: white;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 4;
+            pointer-events: none;
+            border: 1px solid var(--border-glass);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ba-label-before { left: 20px; }
+        .ba-label-after { right: 20px; }
+
+        /* Stats / Why Choose Me */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            background: var(--teal-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 40px 30px;
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--teal-gradient);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--teal-light);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--teal-light);
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Transformation Section */
+        .transformation-section {
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid var(--border-glass);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .transform-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .transform-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .benefit-item i {
+            color: var(--teal-light);
+        }
+
+        .transform-cta {
+            text-align: center;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            padding: 8px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--teal-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-overlay p {
+            color: var(--teal-light);
+            font-size: 0.9rem;
+        }
+
+        /* Working Process */
+        .process-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: var(--border-glass);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            width: 250px;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-dark);
+            border: 2px solid var(--teal-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--teal-light);
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+        }
+
+        .process-step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: center;
+        }
+
+        .price-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 50px 40px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .price-card.popular {
+            transform: scale(1.05);
+            border-color: var(--teal-light);
+            background: linear-gradient(180deg, rgba(0,242,254,0.05) 0%, rgba(0,0,0,0) 100%);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.1);
+        }
+
+        .price-card.popular:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .price-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 30px;
+        }
+
+        .price-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .price-header .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'Montserrat';
+        }
+
+        .price-header span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .price-features li {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+        }
+
+        .price-features i {
+            color: var(--teal-light);
+            font-size: 0.9rem;
+        }
+
+        .price-btn {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        /* Testimonials Section */
+        .testimonial-section {
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid var(--border-glass);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .testimonial-slider-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 10px 0 20px;
+        }
+
+        .testimonial-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(33.333% - 20px);
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 242, 254, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .testi-rating {
+            color: #ffc107;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .testi-text {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .testi-client {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testi-client img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--teal-light);
+        }
+
+        .testi-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .testi-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-glass);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active, .slider-dot:hover {
+            background: var(--teal-light);
+            box-shadow: 0 0 10px var(--teal-glow);
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(rgba(10, 10, 12, 0.9), rgba(10, 10, 12, 0.9)), url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            text-align: center;
+            padding: 120px 20px;
+            border-radius: 30px;
+            margin: 0 24px 100px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .cta-banner h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-banner p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 80px 0 40px;
+            background: #050505;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-col p, .footer-col a {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--teal-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-glass);
+        }
+
+        .social-links a:hover {
+            background: var(--teal-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid, .transform-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero-content p {
+                margin: 0 auto 40px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .ba-wrapper.hero-slider {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .process-wrapper::before {
+                display: none;
+            }
+            .process-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .price-card.popular {
+                transform: scale(1);
+            }
+            .price-card.popular:hover {
+                transform: translateY(-5px);
+            }
+            .testimonial-card {
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .services-grid, .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .transform-benefits {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .cta-banner {
+                margin: 0 0 100px;
+                border-radius: 0;
+            }
+            .testimonial-card {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Pixel<span class="text-gradient">Pro</span></div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#transformation">Transformation</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            <a href="#contact" class="btn btn-outline">Get Custom Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content reveal">
+                <h1>Professional Photo <span class="text-gradient">Editing & Retouching</span> Services</h1>
+                <p>I turn ordinary product photos into high-converting visuals. Premium retouching, color correction, and manipulation for brands worldwide.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+                    <a href="#contact" class="btn btn-outline">Get Free Trial</a>
+                </div>
+            </div>
+            <div class="hero-image reveal">
+                <!-- Interactive Before/After -->
+                <div class="ba-wrapper hero-slider">
+                    <!-- Base Layer: AFTER Image -->
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=100" alt="After Edit" class="ba-image">
+                    <span class="ba-label ba-label-after">After</span>
+                    
+                    <!-- Overlay Layer: BEFORE Image -->
+                    <div class="ba-overlay">
+                        <img src="https://images.unsplash.com/photo-1611042553365-9b101441c135?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Before Edit" class="ba-image">
+                    </div>
+                    <span class="ba-label ba-label-before">Before</span>
+                    
+                    <!-- Slider Core & Handle -->
+                    <div class="ba-slider-line"></div>
+                    <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Why Choose Me -->
+    <section class="section-padding" id="stats">
+        <div class="container stats-grid">
+            <div class="stat-card reveal">
+                <i class="fas fa-calendar-check stat-icon"></i>
+                <h4>5+ Years Experience</h4>
+                <p>Industry proven expertise</p>
+            </div>
+            <div class="stat-card reveal" style="transition-delay: 0.1s;">
+                <i class="fas fa-images stat-icon"></i>
+                <h4>5000+ Images</h4>
+                <p>Successfully edited & delivered</p>
+            </div>
+            <div class="stat-card reveal" style="transition-delay: 0.2s;">
+                <i class="fas fa-bolt stat-icon"></i>
+                <h4>Fast Delivery</h4>
+                <p>24-48 hours turnaround time</p>
+            </div>
+            <div class="stat-card reveal" style="transition-delay: 0.3s;">
+                <i class="fas fa-headset stat-icon"></i>
+                <h4>24/7 Support</h4>
+                <p>Always here to help you</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section-padding" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>My Core <span class="text-gradient">Services</span></h2>
+                <p>Comprehensive photo editing solutions tailored to elevate your brand's visual identity and drive sales.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-content">
+                        <i class="fas fa-cut service-icon"></i>
+                        <h3>Clipping Path</h3>
+                        <p>Precise, hand-drawn clipping paths for perfect background removal, ensuring clean edges for any product type.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <div class="service-content">
+                        <i class="fas fa-magic service-icon"></i>
+                        <h3>Photo Retouching</h3>
+                        <p>High-end skin, product, and dust retouching to make your subject look flawless while keeping natural textures.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <div class="service-content">
+                        <i class="fas fa-tshirt service-icon"></i>
+                        <h3>Ghost Mannequin</h3>
+                        <p>Professional neck joint and invisible mannequin effects for apparel, giving garments a 3D hollow look.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-content">
+                        <i class="fas fa-adjust service-icon"></i>
+                        <h3>Color Correction</h3>
+                        <p>Accurate color matching, exposure fixing, and white balance adjustment to ensure product colors are true to life.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <div class="service-content">
+                        <i class="fas fa-clone service-icon"></i>
+                        <h3>Shadow Creation</h3>
+                        <p>Adding natural drop, reflection, or cast shadows to give products depth and a realistic, grounded appearance.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <div class="service-content">
+                        <i class="fas fa-object-group service-icon"></i>
+                        <h3>Image Masking</h3>
+                        <p>Advanced masking for complex objects like hair, fur, or transparent items where standard clipping paths fail.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dedicated Transformation Section -->
+    <section class="section-padding transformation-section" id="transformation">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>See The <span class="text-gradient">Transformation</span></h2>
+                <p>Drag the slider to see how I enhance every detail professionally. From dull raw files to stunning final deliverables.</p>
+            </div>
+
+            <div class="transform-grid">
+                <!-- Product Retouch -->
+                <div class="ba-wrapper reveal">
+                    <!-- Base Layer (After URL) -->
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=100" alt="Product After" class="ba-image">
+                    <span class="ba-label ba-label-after">After</span>
+                    
+                    <!-- Overlay Layer (Before URL) -->
+                    <div class="ba-overlay">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Product Before" class="ba-image">
+                    </div>
+                    <span class="ba-label ba-label-before">Before</span>
+                    
+                    <div class="ba-slider-line"></div>
+                    <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
+                </div>
+
+                <!-- Fashion Retouch -->
+                <div class="ba-wrapper reveal" style="transition-delay: 0.1s;">
+                    <!-- Base Layer (After URL) -->
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=100" alt="Fashion After" class="ba-image">
+                    <span class="ba-label ba-label-after">After</span>
+                    
+                    <!-- Overlay Layer (Before URL) -->
+                    <div class="ba-overlay">
+                        <img src="https://images.unsplash.com/photo-1550614000-4b95d4ed798b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Fashion Before" class="ba-image">
+                    </div>
+                    <span class="ba-label ba-label-before">Before</span>
+                    
+                    <div class="ba-slider-line"></div>
+                    <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
+                </div>
+
+                <!-- Jewelry Editing -->
+                <div class="ba-wrapper reveal" style="transition-delay: 0.2s;">
+                    <!-- Base Layer (After URL) -->
+                    <img src="https://images.unsplash.com/photo-1599643478524-fb524fa0a8a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=100" alt="Jewelry After" class="ba-image">
+                    <span class="ba-label ba-label-after">After</span>
+                    
+                    <!-- Overlay Layer (Before URL) -->
+                    <div class="ba-overlay">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Jewelry Before" class="ba-image">
+                    </div>
+                    <span class="ba-label ba-label-before">Before</span>
+                    
+                    <div class="ba-slider-line"></div>
+                    <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
+                </div>
+            </div>
+
+            <div class="transform-benefits reveal">
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> High-End Retouching</div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Natural Texture Preservation</div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> E-commerce Ready Output</div>
+            </div>
+
+            <div class="transform-cta reveal">
+                <a href="#contact" class="btn btn-primary">Get Your Free Test Edit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section-padding" id="portfolio">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Recent <span class="text-gradient">Work</span></h2>
+                <p>Browse through my latest edited photos across different industries.</p>
+            </div>
+
+            <div class="portfolio-filters reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="fashion">Fashion</button>
+                <button class="filter-btn" data-filter="jewelry">Jewelry</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item reveal mix ecommerce">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product">
+                    <div class="portfolio-overlay">
+                        <h4>Headphone Retouch</h4>
+                        <p>E-commerce / Background Removal</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal mix fashion">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion">
+                    <div class="portfolio-overlay">
+                        <h4>Apparel Editorial</h4>
+                        <p>Fashion / Color Grading</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal mix jewelry">
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jewelry">
+                    <div class="portfolio-overlay">
+                        <h4>Diamond Ring Fix</h4>
+                        <p>Jewelry / High-End Retouch</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal mix ecommerce">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camera">
+                    <div class="portfolio-overlay">
+                        <h4>Camera Gear</h4>
+                        <p>E-commerce / Shadow Creation</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal mix fashion">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Model">
+                    <div class="portfolio-overlay">
+                        <h4>Beauty Portrait</h4>
+                        <p>Model / Skin Retouching</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal mix jewelry">
+                    <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Watch">
+                    <div class="portfolio-overlay">
+                        <h4>Luxury Watch</h4>
+                        <p>Jewelry / Metal Retouching</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Process -->
+    <section class="section-padding" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Simple <span class="text-gradient">Workflow</span></h2>
+                <p>How we take your images from raw to ready-to-publish in 3 easy steps.</p>
+            </div>
+            
+            <div class="process-wrapper reveal">
+                <div class="process-step">
+                    <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h4>1. Upload Images</h4>
+                    <p>Send your raw files via Dropbox, Drive, or WeTransfer with your instructions.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon"><i class="fas fa-magic"></i></div>
+                    <h4>2. Professional Editing</h4>
+                    <p>I apply precise edits, retouching, and quality checks based on your requirements.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon"><i class="fas fa-download"></i></div>
+                    <h4>3. Download Files</h4>
+                    <p>Receive your flawless, e-commerce ready images within the agreed timeframe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section-padding" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Transparent <span class="text-gradient">Pricing</span></h2>
+                <p>Quality editing solutions scaled to fit your business volume.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Basic -->
+                <div class="price-card reveal">
+                    <div class="price-header">
+                        <h3>Basic Editing</h3>
+                        <div class="price">$0.50<span>/img</span></div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Basic Clipping Path</li>
+                        <li><i class="fas fa-check"></i> White Background</li>
+                        <li><i class="fas fa-check"></i> Simple Resizing</li>
+                        <li><i class="fas fa-check"></i> 24h Turnaround</li>
+                        <li><i class="fas fa-times" style="color:#555"></i> Color Correction</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline price-btn">Get Started</a>
+                </div>
+
+                <!-- Standard (Highlighted) -->
+                <div class="price-card popular reveal" style="transition-delay: 0.1s;">
+                    <div class="price-header">
+                        <h3>Standard Retouch</h3>
+                        <div class="price">$1.50<span>/img</span></div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Advanced Clipping Path</li>
+                        <li><i class="fas fa-check"></i> Dust & Scratch Removal</li>
+                        <li><i class="fas fa-check"></i> Natural Drop Shadow</li>
+                        <li><i class="fas fa-check"></i> Color Correction</li>
+                        <li><i class="fas fa-check"></i> 24h Turnaround</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary price-btn">Most Popular</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="price-card reveal" style="transition-delay: 0.2s;">
+                    <div class="price-header">
+                        <h3>High-End Retouch</h3>
+                        <div class="price">Custom</div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> High-end Skin/Product Retouch</li>
+                        <li><i class="fas fa-check"></i> Ghost Mannequin</li>
+                        <li><i class="fas fa-check"></i> Complex Masking</li>
+                        <li><i class="fas fa-check"></i> Image Manipulation</li>
+                        <li><i class="fas fa-check"></i> Dedicated Support</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline price-btn">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding testimonial-section" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Trusted by <span class="text-gradient">Clients Worldwide</span></h2>
+                <p>See what my clients say about my photo editing services.</p>
+            </div>
+
+            <div class="testimonial-slider-container reveal">
+                <div class="testimonial-track" id="testi-track">
+                    <!-- Card 1 -->
+                    <div class="testimonial-card">
+                        <div class="testi-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testi-text">"Absolutely brilliant work! The attention to detail on our jewelry photos was incredible. They look so premium now. Highly recommended for any e-commerce brand."</p>
+                        <div class="testi-client">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sarah Jenkins">
+                            <div class="testi-info">
+                                <h4>Sarah Jenkins</h4>
+                                <span>United States</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="testimonial-card">
+                        <div class="testi-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testi-text">"Fast, reliable, and highly professional. The ghost mannequin edits were perfectly executed, maintaining the natural fabric texture without looking artificial."</p>
+                        <div class="testi-client">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="David Miller">
+                            <div class="testi-info">
+                                <h4>David Miller</h4>
+                                <span>United Kingdom</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="testimonial-card">
+                        <div class="testi-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testi-text">"I've worked with many editors, but the color correction and skin retouching here is next level. Everything feels completely natural yet flawlessly polished."</p>
+                        <div class="testi-client">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Elena Rodriguez">
+                            <div class="testi-info">
+                                <h4>Elena Rodriguez</h4>
+                                <span>Spain</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="slider-controls" id="testi-controls">
+                    <!-- Dots will be generated dynamically via JS based on window width -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Banner -->
+    <section class="reveal">
+        <div class="cta-banner">
+            <h2>Ready to Elevate Your Visuals?</h2>
+            <p>Send me 1-2 images and I will edit them for free. See the quality before you hire.</p>
+            <a href="#contact" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Get Your First Trial Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">Pixel<span class="text-gradient">Pro</span></div>
+                    <p style="margin-bottom: 20px; max-width: 300px;">Delivering world-class photo editing and retouching services to e-commerce brands, photographers, and agencies globally.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#pricing">Pricing</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="#">Clipping Path</a>
+                    <a href="#">Photo Retouching</a>
+                    <a href="#">Ghost Mannequin</a>
+                    <a href="#">Color Correction</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope" style="color: var(--teal-light); width: 20px;"></i> hello@pixelpro.com</p>
+                    <p><i class="fas fa-phone" style="color: var(--teal-light); width: 20px;"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--teal-light); width: 20px;"></i> New York, USA</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PixelPro Photo Editing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            /* --- Before/After Slider Logic --- */
+            const sliders = document.querySelectorAll('.ba-wrapper');
+            
+            sliders.forEach(slider => {
+                const overlay = slider.querySelector('.ba-overlay');
+                const handle = slider.querySelector('.ba-handle');
+                const line = slider.querySelector('.ba-slider-line');
+                let isDragging = false;
+
+                const moveSlider = (clientX) => {
+                    const rect = slider.getBoundingClientRect();
+                    let x = clientX - rect.left;
+                    
+                    x = Math.max(0, Math.min(x, rect.width));
+                    const percent = (x / rect.width) * 100;
+                    
+                    overlay.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+                    line.style.left = `${percent}%`;
+                    handle.style.left = `${percent}%`;
+                };
+
+                handle.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    e.preventDefault();
+                });
+                
+                window.addEventListener('mouseup', () => { isDragging = false; });
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    moveSlider(e.clientX);
+                });
+
+                handle.addEventListener('touchstart', (e) => { isDragging = true; }, {passive: true});
+                window.addEventListener('touchend', () => { isDragging = false; });
+                window.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    if(e.cancelable) e.preventDefault(); 
+                    moveSlider(e.touches[0].clientX);
+                }, {passive: false});
+            });
+
+            /* --- Testimonial Slider Logic --- */
+            const testiTrack = document.getElementById('testi-track');
+            const testiControls = document.getElementById('testi-controls');
+            const testiCards = document.querySelectorAll('.testimonial-card');
+            
+            let testiIndex = 0;
+            let cardsPerView = 3;
+
+            function initTestiSlider() {
+                if (!testiTrack) return;
+                
+                if (window.innerWidth <= 768) {
+                    cardsPerView = 1;
+                } else if (window.innerWidth <= 1024) {
+                    cardsPerView = 2;
+                } else {
+                    cardsPerView = 3;
+                }
+
+                const totalDots = Math.max(1, testiCards.length - cardsPerView + 1);
+                
+                testiControls.innerHTML = '';
+                if (totalDots > 1) {
+                    for (let i = 0; i < totalDots; i++) {
+                        const dot = document.createElement('div');
+                        dot.classList.add('slider-dot');
+                        if (i === 0) dot.classList.add('active');
+                        dot.addEventListener('click', () => goToTestiSlide(i));
+                        testiControls.appendChild(dot);
+                    }
+                }
+                
+                goToTestiSlide(0);
+            }
+
+            function goToTestiSlide(index) {
+                if(testiCards.length === 0) return;
+                const gap = 30; // Matches CSS gap
+                const cardWidth = testiCards[0].offsetWidth;
+                
+                testiIndex = index;
+                const offset = -(testiIndex * (cardWidth + gap));
+                testiTrack.style.transform = `translateX(${offset}px)`;
+                
+                const dots = document.querySelectorAll('#testi-controls .slider-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === testiIndex);
+                });
+            }
+
+            window.addEventListener('resize', initTestiSlider);
+            initTestiSlider();
+
+            /* --- Scroll Reveal Animation Logic --- */
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                revealElements.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    const elementVisible = 100; 
+                    if (elementTop < windowHeight - elementVisible) {
+                        el.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+
+            /* --- Portfolio Filtering Logic --- */
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                            item.style.display = 'block';
+                            setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => { item.style.display = 'none'; }, 300);
+                        }
+                    });
+                });
+            });
+            
+            /* --- Smooth Scrolling for anchor links --- */
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
